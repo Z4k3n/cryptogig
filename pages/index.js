@@ -10,17 +10,44 @@ const Home = ({ onConnect, onDisconnect, connectedAddress }) => {
     router.push('/services'); // Redirige a la página de servicios disponibles
   };
 
+  const formatAddress = (address) => {
+    return address ? `${address.substring(0, 6)}...${address.substring(address.length - 4)}` : '';
+  };
+
   return (
     <div className="container">
+      {/* Navbar */}
+      <nav className="navbar">
+        <div className="navbar-left">
+          <h1>Cryptogig</h1>
+        </div>
+        <div className="navbar-right">
+          {connectedAddress ? (
+            <div className="wallet-info">
+              <img
+                src="/wallet-icon.png" // Asegúrate de agregar un icono representativo en la carpeta /public
+                alt="Wallet Icon"
+                className="wallet-icon"
+              />
+              <span className="wallet-address">{formatAddress(connectedAddress)}</span>
+              <button className="disconnect-button" onClick={onDisconnect}>
+                Disconnect
+              </button>
+            </div>
+          ) : (
+            <WalletConnect
+              onConnect={handleConnect}
+              onDisconnect={onDisconnect}
+              connectedAddress={connectedAddress}
+            />
+          )}
+        </div>
+      </nav>
+
+      {/* Rest of the home page */}
       <header className="header">
         <h1>Welcome to Cryptogig</h1>
         <p>Empower Your Freelancing with Blockchain Technology</p>
-        <WalletConnect 
-          onConnect={handleConnect} 
-          onDisconnect={onDisconnect} 
-          connectedAddress={connectedAddress} 
-        />
-        <a href="#get-started" className="ctaButton">Get Started</a>
       </header>
 
       <section className="section features">
@@ -52,7 +79,7 @@ const Home = ({ onConnect, onDisconnect, connectedAddress }) => {
         <div className="faqItem">
           <h3>Are there any hidden fees?</h3>
           <div className="faqItemContent">
-            <p>No hidden fees. Cryptogig's decentralized nature means you keep every cent you earn.</p>
+            <p>No hidden fees, in our platform you only pay 0,1% as service fee. Cryptogig's decentralized nature means you keep every cent you earn.</p>
           </div>
         </div>
         <div className="faqItem">
@@ -62,19 +89,6 @@ const Home = ({ onConnect, onDisconnect, connectedAddress }) => {
           </div>
         </div>
       </section>
-
-      <section className="section socials">
-        <h2>Connect with Us</h2>
-        <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="socialLink">
-          <FaXTwitter className="icon" size={24} />
-          Twitter
-        </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="socialLink">
-          <FaGithubSquare className="icon" size={24} />
-          Github
-        </a>
-      </section>
-
       <footer className="footer">
         <p>&copy; 2024 Cryptogig. All rights reserved.</p>
       </footer>

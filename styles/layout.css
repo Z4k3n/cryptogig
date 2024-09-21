@@ -1,220 +1,124 @@
-/* Importing Poppins font */
+/* Importando la fuente Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-body{
+/* Estilos generales */
+body {
   margin: 0;
-}
-
-/* General Container Styling */
-.container {
   font-family: 'Poppins', sans-serif;
+  background-color: #F0F4F8;
   color: #333;
-  padding: 20px;
-  box-sizing: border-box;
 }
 
-/* Header Styling */
-.header {
-  background: linear-gradient(135deg, #2b2d2f, #1c1e1f);
-  color: white;
-  padding: 40px;
-  text-align: center;
-  border-radius: 15px;
-  margin-bottom: 30px;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-.header p {
-  font-size: 1.2rem;
-}
-
-.ctaButton {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #f97316;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.ctaButton:hover {
-  background-color: #fb923c;
-}
-
-/* Section Styling */
-.section {
-  margin-bottom: 40px;
-  padding: 50px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section h2 {
-  margin-top: 0;
-}
-
-.features ul, .howItWorks ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.features li, .howItWorks li {
-  margin-bottom: 10px;
-}
-
-/* FAQ Styling */
-.faqItem {
-  cursor: pointer;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  transition: background-color 0.3s ease;
-}
-
-.faqItem.open .faqItemContent {
-  display: block;
-}
-
-.faqItem h3 {
-  margin: 0;
-}
-
-/* Socials Section Styling */
-.socials {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.socialLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
-  color: #1DA1F2;
-  text-decoration: none;
-}
-
-.socialLink:hover {
-  color: #0d95e8;
-}
-
-/* Footer Styling */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 15px;
-  margin-top: 40px;
-}
-
-/* Estilo base del contenedor */
-.container {
-  min-height: 100vh;
+/* Navbar */
+.navbar {
   display: flex;
-  flex-direction: column;
-  background: linear-gradient(45deg, #ff6f61, #d6a4a4, #6b5b95, #febf77);
-  background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
-}
-
-/* Animación del gradiente */
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
-/* Otros estilos */
-.header {
-  text-align: center;
-  padding: 50px;
-  color: #fff;
-}
-
-.section {
-  padding: 40px;
-  margin-top: 20px;
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.socials {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.socialLink {
-  display: inline-flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
-  margin-right: 10px;
-  margin-left: 10px;
-  color: #000000;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  padding: 15px 30px;
+  background-color: #1B1F3B;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
-/* Más estilos */
+.navbar-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #F97316;
+}
 
-form {
+.navbar-right {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+}
+
+.user-profile {
+  margin-top: 80px; /* Para evitar que el contenido esté detrás del navbar */
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 80%;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
-label {
-  font-weight: bold;
-  font-size: 1.1rem;
+.banner-avatar-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
-input, textarea, select {
+.banner {
+  width: 70%;
+  height: 200px;
+  background-size: cover;
+  border-radius: 10px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea {
   width: 100%;
   padding: 10px;
-  font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
-}
-
-textarea {
-  height: 100px;
+  margin-bottom: 15px;
 }
 
 button {
-  padding: 15px;
+  padding: 10px;
   background-color: #f97316;
   color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #fb923c;
+}
+
+.copy-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.info-tooltip {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 10;
+  margin-top: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
