@@ -1,18 +1,32 @@
+import { useRouter } from 'next/router';
 import { FaTwitter as FaXTwitter, FaShieldAlt, FaDollarSign, FaGlobe, FaGithubSquare } from 'react-icons/fa';
+import WalletConnect from '../components/WalletConnect'; // Asegúrate de que la ruta sea correcta
 
-const Home = () => {
+const Home = ({ onConnect, onDisconnect, connectedAddress }) => {
+  const router = useRouter();
+
+  const handleConnect = (address) => {
+    onConnect(address);
+    router.push('/services'); // Redirige a la página de servicios disponibles
+  };
+
   return (
     <div className="container">
       <header className="header">
         <h1>Welcome to Cryptogig</h1>
         <p>Empower Your Freelancing with Blockchain Technology</p>
+        <WalletConnect 
+          onConnect={handleConnect} 
+          onDisconnect={onDisconnect} 
+          connectedAddress={connectedAddress} 
+        />
         <a href="#get-started" className="ctaButton">Get Started</a>
       </header>
 
       <section className="section features">
         <h2>Why Choose Cryptogig?</h2>
         <ul>
-          <li><FaShieldAlt className="icon" /> <strong>Decentralized Control:</strong> No central authority. No restrictions. No interference. Operate freely on the Ethereum blockchain.</li>
+          <li><FaShieldAlt className="icon" /> <strong>Decentralized Control:</strong> No central authority. No restrictions. No interference. Operate freely on the blockchain.</li>
           <li><FaDollarSign className="icon" /> <strong>Your Earnings, Your Power:</strong> Zero hidden costs. Every penny you earn is yours to keep.</li>
           <li><FaGlobe className="icon" /> <strong>Global Reach, Local Impact:</strong> Connect with a global audience and expand your freelancing horizons.</li>
         </ul>
@@ -23,7 +37,7 @@ const Home = () => {
         <ol>
           <li><strong>Create Your Profile: </strong> Showcase your skills and attract clients.</li>
           <li><strong>Connect & Negotiate: </strong> Engage directly with clients without middlemen.</li>
-          <li><strong>Get Paid Instantly: </strong> Enjoy secure and transparent payments on the Ethereum blockchain.</li>
+          <li><strong>Get Paid Instantly: </strong> Enjoy secure and transparent payments on the blockchain.</li>
         </ol>
       </section>
 
@@ -32,7 +46,7 @@ const Home = () => {
         <div className="faqItem">
           <h3>How does Cryptogig ensure security?</h3>
           <div className="faqItemContent">
-            <p>Our platform uses Ethereum’s robust security features to protect your transactions and data, ensuring no single point of failure.</p>
+            <p>Our platform uses blockchain's robust security features to protect your transactions and data, ensuring no single point of failure.</p>
           </div>
         </div>
         <div className="faqItem">

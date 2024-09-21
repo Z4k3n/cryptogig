@@ -1,31 +1,14 @@
-import { useState } from 'react';
-import { ethers } from 'ethers';
+import { useContext, useState } from 'react';
+import { WalletContext } from '../pages/context/WalletContext';
 
-const WalletConnect = ({ onConnect, onDisconnect, connectedAddress }) => {
+const WalletConnect = () => {
+  const { connectedAddress, connectWallet, disconnectWallet } = useContext(WalletContext);
   const [loading, setLoading] = useState(false);
 
-  const connectWallet = async () => {
+  const handleConnect = async () => {
     setLoading(true);
-    if (typeof window !== 'undefined' && window.ethereum) {
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send('eth_requestAccounts', []);
-        const signer = provider.getSigner();
-        const address = await signer.getAddress();
-        onConnect(address);
-      } catch (error) {
-        console.error('Error connecting wallet:', error);
-      } finally {
-        setLoading(false);
-      }
-    } else {
-      alert('Please install MetaMask!');
-      setLoading(false);
-    }
-  };
-
-  const disconnectWallet = () => {
-    onDisconnect();
+    await connectWallet();
+    setLoading(false);
   };
 
   return (
@@ -36,7 +19,7 @@ const WalletConnect = ({ onConnect, onDisconnect, connectedAddress }) => {
           <button onClick={disconnectWallet}>Disconnect Wallet</button>
         </>
       ) : (
-        <button onClick={connectWallet} disabled={loading}>
+        <button onClick={handleConnect} disabled={loading}>
           {loading ? 'Connecting...' : 'Connect Wallet'}
         </button>
       )}

@@ -173,3 +173,48 @@ body{
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
+/* Más estilos */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
+}
+
+button {
+  padding: 15px;
+  background-color: #f97316;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #fb923c;
+}
